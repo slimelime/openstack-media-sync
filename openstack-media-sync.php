@@ -23,7 +23,7 @@ use OpenCloud\Openstack;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 
 function add_pages() {
-    $r = add_submenu_page('options-general.php', "Openstack Media Sync", "Openstack Media Sync", 'edit_pages', __FILE__, 'option_page');
+    $r = add_submenu_page('options-general.php', "Openstack Object Storage", "Openstack Media Sync", 'edit_pages', __FILE__, 'option_page');
 }
 
 function option_page() {
