@@ -3,3 +3,7 @@
     color: #FF5500;
     fonr-weight: bold;
 }
+table.osms-settings tr th {
+	vertical-align: top;
+	text-align: left;
+}

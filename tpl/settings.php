@@ -19,14 +19,17 @@
 </div>
 <?php endif; ?>
 
-<h2><?php _e('Setting ConoHa Object Sync', "openstack-media-sync"); ?></h2>
+<h2><?php _e('Openstack Media Sync Settings', "openstack-media-sync"); ?></h2>
 
-<p><?php _e("Type the API informations for the ConoHa Object storage. No account? Let's ", 'openstack-media-sync'); ?><a href="<?php _e('https://www.conoha.jp/en/', 'openstack-media-sync'); ?>" target="_blank" ><?php _e('signup', 'openstack-media-sync'); ?></a></p>
+
+<h4><?php _e('Configure Openstack Object Storage Service', "openstack-media-sync"); ?></h4>
+
+<p><?php _e("Enter your openstack account information.", 'openstack-media-sync'); ?></p>
 
 <form method="post" action="options.php">
 		<?php settings_fields('osms-options'); ?>
 		<?php do_settings_sections('osms-options'); ?>
-		<table>
+		<table class="osms-settings">
 				<tr>
 						<th><?php _e('API Account', 'openstack-media-sync') ?>:</th>
 						<td>
@@ -85,9 +88,10 @@
 																				 get_option('osms-servicename')
 																				 ); ?>" class="regular-text code"/>
 
-								<p class="description"><?php _e('The name of OpenStack object-store service. You can find it in KeyStone "token-get" response.', 'openstack-media-sync'); ?></p>
+								<p class="description">
+									<?php _e('The name of your OpenStack object-store service. You can find it in KeyStone "token-get" response or by using', 'openstack-media-sync'); ?><a href="http://docs.openstack.org/cli-reference/common/cli_install_openstack_command_line_clients.html" target="_blank"><?php _e('openstack command line tools', 'openstack-media-sync'); ?></a><?php _e('to call ‘openstack catalog list’.', 'openstack-media-sync'); ?></p>
 
-<p class="description"><?php _e('You will use "Object Storage Service" for ConoHa. If you use the old ConoHa, try to use "swift".', 'openstack-media-sync'); ?></p>
+								<p class="description"><?php _e('Usually this is "Object Storage Service", but some older services use "swift".', 'openstack-media-sync'); ?></p>
 
 						</td>
 				</tr>
@@ -98,8 +102,8 @@
 												size="15" value="<?php echo esc_attr(
 																				 get_option('osms-container')
 																				 ); ?>" class="regular-text code"/>
-								<p class="description"><?php _e('Container name that media files is uploaded. If the container not found, It will create automatically.', 'openstack-media-sync'); ?></p>
-								<p class="osms-warning"><?php _e('The plugin will set the ACL to allow public access.', 'openstack-media-sync'); ?></p>
+								<p class="description"><?php _e('Container to connect wordpress to.  Only one container can be used currently. If not matching container is found, a new container will be created.', 'openstack-media-sync'); ?></p>
+								<p class="osms-warning"><?php _e('This plugin requires the access control list to allow public access to the container.', 'openstack-media-sync'); ?></p>
 						</td>
 				</tr>
 				<tr>
@@ -121,8 +125,8 @@
 																				 get_option('osms-extensions')
 																				 ); ?>" class="regular-text code"/>
 
-								<p class="description"><?php _e('The media files that has these extensions will be uploaded to the Object Storage. You can use comma separated format to specify more than one(Example: "png,jpg,gif,mov,wmv").', 'openstack-media-sync'); ?></p>
-								<p class="description"><?php _e('If this field is blank, Everything will be uploaded.', 'openstack-media-sync'); ?></p>
+								<p class="description"><?php _e('Only upload/sync files with these extensions. Use comma separated format to list more filetype (e.g. "png,jpg,gif,mov,wmv").', 'openstack-media-sync'); ?></p>
+								<p class="description"><?php _e('Leave this field black to upload all Wordpress attachment file types.', 'openstack-media-sync'); ?></p>
 
 						</td>
 				</tr>
@@ -138,8 +142,8 @@
 																				 get_option('osms-directories')
 																				 ); ?>" class="regular-text code"/>
 
-								<p class="description"><?php _e('Media files in these directories ONLY will be uploaded. You can use comma separated format to specify more than one.', 'openstack-media-sync'); ?></p>
-								<p class="description"><?php _e('If this field is blank, Everything will be uploaded.', 'openstack-media-sync'); ?></p>
+								<p class="description"><?php _e('Only upload/sync attachment files in these directories. You can use comma separated format to specify more than one.  Matching is path-string based, so you can enter "photos" or be more specific by entering "/photos/2015/".', 'openstack-media-sync'); ?></p>
+								<p class="description"><?php _e('Leave this field black to upload Wordpress attachment files in all directories.', 'openstack-media-sync'); ?></p>
 
 						</td>
 				</tr>
@@ -180,6 +184,6 @@
 <hr />
 <h2><?php _e('Resynchronization', "openstack-media-sync"); ?></h2>
 <form  method="post">
-     <p><?php _e('Resynchronization all media files to the Object Storage. It may take a long time.', 'openstack-media-sync') ?></p>
+     <p><?php _e('Resynchronize all media files to the Object Storage account. This may take a significant amount of time if you have a large amount of files.', 'openstack-media-sync') ?></p>
     <?php submit_button('Resynchronization', 'Secondary', 'resync') ?>
 </form>
