@@ -126,9 +126,9 @@ function osms_connect_test()
     }
 
     try {
-        $ojs = __get_object_store_service($username, $password, $tenant_id, $auth_url, $region, $servicename);
+        $osms = __get_object_store_service($username, $password, $tenant_id, $auth_url, $region, $servicename);
         echo json_encode(array(
-                             'message' => "Connection was Successfully.",
+                             'message' => "Connection was successful.",
                              'is_error' => false,
                      ));
         exit;

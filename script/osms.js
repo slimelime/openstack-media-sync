@@ -1,11 +1,11 @@
-var conohaojs_connect_test = function() {
+var osms_connect_test = function() {
     var data = {
-	action: "conohaojs_connect_test",
-	username: jQuery("#conohaojs-username").val(),
-	password: jQuery("#conohaojs-password").val(),
-	tenantId: jQuery("#conohaojs-tenant-id").val(),
-	authUrl: jQuery("#conohaojs-auth-url").val(),
-	region: jQuery("#conohaojs-region").val()
+	action: "osms_connect_test",
+	username: jQuery("#osms-username").val(),
+	password: jQuery("#osms-password").val(),
+	tenantId: jQuery("#osms-tenant-id").val(),
+	authUrl: jQuery("#osms-auth-url").val(),
+	region: jQuery("#osms-region").val()
     };
 
     jQuery.ajax({
@@ -16,26 +16,26 @@ var conohaojs_connect_test = function() {
 	    var res = jQuery.parseJSON(response);
 
             jQuery("html,body").animate({scrollTop: 0}, 1000);
-            jQuery("#conohaojs-flash P").empty().append(res["message"]);
+            jQuery("#osms-flash P").empty().append(res["message"]);
 	    if(res["is_error"]) {
-		jQuery("#conohaojs-flash").addClass("error");
+		jQuery("#osms-flash").addClass("error");
 	    } else {
-		jQuery("#conohaojs-flash").removeClass("error");
+		jQuery("#osms-flash").removeClass("error");
 	    }
 
-	    jQuery('#conohaojs-flash').show();
+	    jQuery('#osms-flash').show();
         }
         //dataType: 'html'
     });
     jQuery("#selupload_spinner").unbind("ajaxSend");
 };
 
-var conohaojs_resync = function() {
-    if( ! confirm("It will may take a long time. Are you sure? ")) {
+var osms_resync = function() {
+    if( ! confirm("This can take a significant amount of time if you have a large amount of files. Are you sure? ")) {
 	return;
     }
 };
 
 jQuery(function() {
-    jQuery("#conohaojs-flash").hide();
+    jQuery("#osms-flash").hide();
 });
