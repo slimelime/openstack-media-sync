@@ -22,11 +22,11 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPA
 use OpenCloud\Openstack;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 
-function add_pages() {
-    $r = add_submenu_page('options-general.php', "Openstack Object Storage", "Openstack Media Sync", 'edit_pages', __FILE__, 'osms_option_page');
+function osms_add_pages() {
+    $r = add_submenu_page('options-general.php', "Openstack Object Storage", "Openstack Media Sync", 'edit_pages', __FILE__, 'option_page');
 }
 
-function osms_option_page() {
+function option_page() {
     wp_enqueue_script('osms-script', plugins_url( '/script/osms.js' , __FILE__ ), array( 'jquery' ), '1.2.4',true);
 
     wp_enqueue_style('osms-style', plugins_url('style/osms.css', __FILE__));
@@ -294,7 +294,7 @@ function osms_modify_uploadfilename($file){
 
 // -------------------- WordPress hooks --------------------
 
-add_action('admin_menu', 'add_pages');
+add_action('admin_menu', 'osms_add_pages');
 add_action('admin_init', 'osms_options' );
 add_action('wp_ajax_osms_connect_test', 'osms_connect_test');
 
