@@ -23,10 +23,10 @@ use OpenCloud\Openstack;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 
 function add_pages() {
-    $r = add_submenu_page('options-general.php', "Openstack Object Storage", "Openstack Media Sync", 'edit_pages', __FILE__, 'option_page');
+    $r = add_submenu_page('options-general.php', "Openstack Object Storage", "Openstack Media Sync", 'edit_pages', __FILE__, 'osms_option_page');
 }
 
-function option_page() {
+function osms_option_page() {
     wp_enqueue_script('osms-script', plugins_url( '/script/osms.js' , __FILE__ ), array( 'jquery' ), '1.2.4',true);
 
     wp_enqueue_style('osms-style', plugins_url('style/osms.css', __FILE__));
